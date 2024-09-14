@@ -43,11 +43,10 @@ def reg_cliente():
 
     with open('BD_clientes.txt') as bdclientes:
         bdc_lines = bdclientes.readlines()
-        for line in bdc_lines:
-            if dados_novo_cliente in line:
+        if f'{dados_novo_cliente}\n' in bdc_lines:
                 print('Usuário já cadastrado.\n')
                 call_menu()
-        if dados_novo_cliente not in bdc_lines:
+        elif f'{dados_novo_cliente}\n' not in bdc_lines:
             with open('BD_clientes.txt', 'a') as bdclientes_w:
                 bdclientes_w.write(f'{dados_novo_cliente}\n')
                 print("Usuário registrado com sucesso!\n")
