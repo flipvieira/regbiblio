@@ -1,4 +1,5 @@
 is_on = True
+#This comment is a test for git.
 
 class Cliente:
     def __init__(self, nome, data_nasc, data_reg, cpf, iden):
