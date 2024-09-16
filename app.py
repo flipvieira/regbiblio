@@ -64,11 +64,10 @@ def reg_livro():
 
     with open('BD_livros.txt') as bdlivros:
         bdl_lines = bdlivros.readlines()
-        for line in bdl_lines:
-            if dados_novo_livro in line:
+        if f'{dados_novo_livro}\n' in line:
                 print("Livro já cadastrado.\n")
                 call_menu()
-        if dados_novo_livro not in bdl_lines:
+        elif f'{dados_novo_livro}\n' not in bdl_lines:
             with open('BD_livros.txt', 'a') as bdlivros_w:
                 bdlivros_w.write(f'{dados_novo_livro}\n')
                 print("Livro registrado com sucesso!\n")
@@ -83,11 +82,10 @@ def reg_emprestimo():
 
     with open('BD_processos.txt') as bdprocessos:
         bdp_lines = bdprocessos.readlines()
-        for line in bdp_lines:
-            if dados_novo_emprestimo in line:
+        if f'{dados_novo_emprestimo}\n' in line:
                 print("Empréstimo já cadastrado.\n")
                 call_menu()
-        if dados_novo_emprestimo not in bdp_lines:
+        elif f'{dados_novo_emprestimo}\n' not in bdp_lines:
             with open('BD_processos.txt', 'a') as bdprocessos_w:
                 bdprocessos_w.write(f'{dados_novo_emprestimo}\n')
                 print('Empréstimo registrado com sucesso!\n')
@@ -101,17 +99,16 @@ def reg_devol():
 
     with open('BD_devolucoes.txt') as bddevolucoes:
         bdd_lines = bddevolucoes.readlines()
-        for line in bdd_lines:
-            if dados_nova_devolucao in line:
+        if f'{dados_nova_devolucao}\n' in line:
                 print('Devolução já registrada.\n')
                 call_menu()
-        if dados_nova_devolucao not in bdd_lines:
+        elif f'{dados_nova_devolucao}\n' not in bdd_lines:
             with open('BD_devolucoes.txt', 'a') as bddevolucoes_w:
                 bddevolucoes_w.write(f'{dados_nova_devolucao}\n')
                 print('Devolução registrada com sucesso!\n')
 
 def call_menu():
-    print('Bem vindo ao RegBiblio 1.0!\nPara continuar, digite um comando e pressione enter.\nSe precisa de ajuda para receber uma lista de comandos, digite "ajuda" e pressione enter.\nPara fechar o RegBiblio 1.0, digite "sair" e pressione enter.')
+    print('BEM VINDO AO REGBIBLIO 1.0!\nPara continuar, digite um comando e pressione enter.\nSe precisa de ajuda para receber uma lista de comandos, digite "ajuda" e pressione enter.\nPara fechar o RegBiblio 1.0, digite "sair" e pressione enter.')
     global is_on
     comandos_validos = ('regcliente', 'reglivro', 'regemp', 'regdevol', 'ajuda', 'sair')
     comando = input("Inserir comando: ")
@@ -132,7 +129,7 @@ def call_menu():
         is_on = False
 
 def ajuda():
-    print('Lista de comandos aceitos pelo RegBiblio 1.0:\n\n- "regcliente": iniciar registro de clientes;\n- "reglivro": iniciar registro de livros;\n- "regemp": iniciar registro de empréstimos;\n- "regdevol": iniciar registro de devoluções;\n-"ajuda": exibe esta lista de comandos;\n')
+    print('LISTA DE COMANDOS REGBIBLIO 1.0:\n\n- "regcliente": iniciar registro de clientes;\n- "reglivro": iniciar registro de livros;\n- "regemp": iniciar registro de empréstimos;\n- "regdevol": iniciar registro de devoluções;\n-"ajuda": exibe esta lista de comandos;\n')
     call_menu()
 
 while is_on:
